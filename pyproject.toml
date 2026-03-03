@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cve_agent"]
+
+[project]
+name = "zeromint"
+version = "0.1.0"
+description = "LLM Agent-based Vulnerability Detection & Automated PoC/Triage Platform (Research/Defense)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "ZeroMint" }]
+
+dependencies = [
+    "pydantic>=2.0,<3.0",
+    "pydantic-settings>=2.0,<3.0",
+    "typer>=0.9",
+    "rich>=13.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "tree-sitter>=0.20",
+    "tree-sitter-python>=0.20",
+    "tree-sitter-javascript>=0.20",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "hypothesis>=6.90",
+    "ruff>=0.2",
+    "mypy>=1.8",
+]
+
+[project.scripts]
+zeromint = "cve_agent.cli:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
