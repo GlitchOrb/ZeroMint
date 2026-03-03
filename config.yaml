@@ -1,0 +1,34 @@
+# ─── Target ──────────────────────────────────────────────────
+target:
+  type: repo                       # repo | api | binary
+  path_or_url: ./tests/fixtures/sample_repo    # point to a safe local target for testing
+  languages_hint:
+    - python
+  ignore_patterns: []              # extra globs (built-ins: .git, node_modules, etc.)
+
+# ─── Feature toggles ────────────────────────────────────────
+features:
+  enable_graph: true
+  enable_semgrep: false
+  enable_codeql: false
+  enable_fuzz: true
+  enable_sanitizers: false
+
+# ─── Sandbox ─────────────────────────────────────────────────
+sandbox:
+  enabled: true
+  network_off: true                # ALWAYS true in production
+  cpu: 1.0
+  mem_mb: 512
+  timeout_sec: 60
+
+# ─── LLM ─────────────────────────────────────────────────────
+llm:
+  enabled: true                    # Enable LLM for local testing
+  provider: dummy                  # Use dummy provider so API keys aren't needed
+  model: null
+
+# ─── Budget ──────────────────────────────────────────────────
+budget:
+  max_tokens: null
+  max_cost_usd: null

@@ -32,7 +32,7 @@ from cve_agent import __version__
 
 app = typer.Typer(
     name="zeromint",
-    help="ZeroMint — LLM Agent-based Vulnerability Detection & Automated PoC/Triage Platform (Research/Defense)",
+    help="ZeroMint - LLM Agent-based Vulnerability Detection & Automated PoC/Triage Platform (Research/Defense)",
     no_args_is_help=True,
 )
 console = Console()
